@@ -1,6 +1,7 @@
 package com.notiofication.NotificationSystem.Service;
 
 import com.notiofication.NotificationSystem.Repository.UserRepository;
+import com.notiofication.NotificationSystem.exception.UserException;
 import com.notiofication.NotificationSystem.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,9 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public User createUser(User user) {
+    public User createUser(User user) throws UserException {
         if (userRepository.existsByEmail(user.getEmail())) {
-            throw new RuntimeException("User with email " + user.getEmail() + " already exists!");
+            throw new UserException("User with email " + user.getEmail() + " already exists!");
         }
         return userRepository.save(user);
     }

@@ -27,7 +27,7 @@ public class EmailNotificationConsumer {
             message.setText(notification.getMessage());
 
             // ⬇️ THIS IS WHERE THE MAIL IS ACTUALLY SENT
-            mailSender.send(message);
+//            mailSender.send(message);
 
             System.out.println("✅ Email sent successfully to: " + notification.getRecipient());
         } catch (Exception e) {

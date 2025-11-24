@@ -1,6 +1,7 @@
 package com.notiofication.NotificationSystem.controller;
 
 import com.notiofication.NotificationSystem.Service.UserService;
+import com.notiofication.NotificationSystem.exception.UserException;
 import com.notiofication.NotificationSystem.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +40,7 @@ public class UserController {
 
     // POST create new user
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody User user) throws UserException {
         return ResponseEntity.ok(userService.createUser(user));
     }
 
